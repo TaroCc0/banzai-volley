@@ -5,19 +5,20 @@
         background-color: var(--banzai-blue);
         color: white;
         padding: 60px 0;
+        transition: padding 0.3s ease;
     }
 
     .landing-card {
         background: white;
         border: 1px solid #e9e6df;
-        border-radius: 8px;
-        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 12px; /* Angoli leggermente più morbidi e moderni */
+        transition: transform 0.3s, box-shadow 0.3s;
         height: 100%;
     }
 
     .landing-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(13, 35, 71, 0.08);
+        box-shadow: 0 12px 24px rgba(13, 35, 71, 0.12);
     }
 
     .icon-circle {
@@ -33,27 +34,31 @@
         margin: 0 auto 20px;
     }
 
-    /* LOGO OVALE DEFINITIVO */
+    /* LOGO OVALE PERFETTAMENTE RESPONSIVE */
     .hero-logo {
-        width: 400px;
-        /* Più largo */
-        height: 250px;
-        /* Più schiacciato, crea l'ovale */
-        object-fit: contain;
-        /* Assicura che il logo dentro non si tagli */
-        background-color: white;
-        border-radius: 50%;
-        /* Trasforma il box in un ovale perfetto */
-        border: 4px solid white;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        width: 90%;               /* Prende quasi tutta la larghezza su smartphone */
+        max-width: 380px;         /* Dimensione massima bloccata su PC */
+        aspect-ratio: 16 / 10;    /* Formula matematica per mantenere l'ovale perfetto */
+        object-fit: contain;      /* Protegge l'immagine interna da tagli */
+        background-color: white; 
+        border-radius: 50%;       /* Genera la curvatura ellittica */
+        border: 4px solid white; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); 
         margin-bottom: 25px;
+        padding: 8px;
     }
 
-    .date-badge {
-        font-size: 1rem;
-        letter-spacing: 1px;
-        padding: 10px 25px;
-        border-radius: 50px;
+    /* MEDIA QUERY: Ottimizzazioni specifiche per Smartphone */
+    @media (max-width: 576px) {
+        .hero-landing {
+            padding: 40px 15px;    /* Riduce i super-spazi vuoti inutili su mobile */
+        }
+        .hero-landing h1 {
+            font-size: 2rem !important; /* Evita che il titolo si spezzi male su schermi stretti */
+        }
+        .hero-logo {
+            max-width: 290px;     /* Leggermente più compatto sui telefoni piccoli */
+        }
     }
 </style>
 
