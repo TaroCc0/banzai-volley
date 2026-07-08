@@ -7,7 +7,7 @@
         padding: 45px 0; 
     }
     
-    /* MODERNE CARD ORIZZONTALI (Stile Stripe/Airbnb) */
+    /* CARD MINIMALISTE E CURATE (Stile Airbnb/Stripe) */
     .feature-strip { 
         background: white; 
         border: none;
@@ -23,7 +23,7 @@
         min-width: 45px;
     }
     
-    /* BADGE DETTAGLI IN GRIGLIA */
+    /* GRIGLIA BADGE DETTAGLI COMPATTI */
     .detail-badge { 
         background-color: white; 
         color: var(--banzai-blue); 
@@ -35,7 +35,7 @@
     .detail-badge h3 { font-weight: 900; margin: 0; font-size: 1.6rem; color: var(--banzai-red); }
     .detail-badge span { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; opacity: 0.8; display: block; margin-top: 4px; }
     
-    /* MAPPA EMBED COMPATTA */
+    /* SEZIONE MAPPA CORRETTA E RESPONSIVE */
     .map-card { 
         background: white; 
         border: none;
@@ -47,12 +47,13 @@
     .map-container { 
         position: relative; 
         width: 100%; 
-        height: 220px; 
+        height: 240px; 
         border-radius: 12px; 
         overflow: hidden; 
     }
     .map-container iframe { width: 100%; height: 100%; border: 0; }
 
+    /* OTTIMIZZAZIONE IN DEEP PER DISPOSITIVI MOBILI */
     @media (max-width: 576px) {
         .info-header h1 { font-size: 1.8rem !important; }
         .feature-strip { padding: 20px; }
@@ -78,12 +79,12 @@
                 <div class="d-flex align-items-start">
                     <div class="feature-icon-box me-3"><i class="bi bi-trophy-fill"></i></div>
                     <div>
-                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">La Formula del Torneo</h5>
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue); font-size:1.05rem;">La Formula del Torneo</h5>
                         <ul class="text-muted ps-3 mb-0 small" style="line-height: 1.7;">
-                            <li><strong>Formato:</strong> 5 vs 5 misto (Età: 18+).</li>
-                            <li><strong>Struttura:</strong> 4 gironi da 5 squadre con <strong>5 partite garantite</strong>.</li>
-                            <li><strong>Calendario:</strong> Sabato (pomeriggio) gironi. Domenica prosecuzione gironi e fasi finali.</li>
-                            <li><strong>Meccanica:</strong> Prima di ogni match si affronta un minigioco folle che assegna bonus strategici per la partita di volley successiva.</li>
+                            <li><strong>Formato:</strong> 5 vs 5 misto (Età ammessi: 18+).</li>
+                            <li><strong>Struttura:</strong> 4 gironi da 5 squadre con <strong>5 partite garantite per tutti</strong>.</li>
+                            <li><strong>Calendario:</strong> Sabato (pomeriggio) gironi. Domenica prosecuzione qualifiche e fasi finali.</li>
+                            <li><strong>Meccanica Speciale:</strong> Prima di ogni match si affronta un minigioco folle che assegna bonus strategici per la partita di volley successiva.</li>
                         </ul>
                     </div>
                 </div>
@@ -93,14 +94,14 @@
                 <div class="d-flex align-items-start">
                     <div class="feature-icon-box me-3"><i class="bi bi-cash-coin"></i></div>
                     <div>
-                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">Quote e Iscrizioni</h5>
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue); font-size:1.05rem;">Quote e Iscrizioni</h5>
                         <p class="text-muted small mb-2">
                             Quota di iscrizione: <strong>20 € a persona</strong>. Team composti da un <strong>minimo di 6 a un massimo di 8 atleti</strong>.
                         </p>
                         <ul class="text-muted ps-3 small mb-0" style="line-height: 1.6;">
-                            <li>Maglietta tecnica ufficiale personalizzata</li>
-                            <li>Buono pasto incluso per il pranzo domenicale</li>
-                            <li>Assicurazione sportiva inclusa per l'evento</li>
+                            <li>Maglietta tecnica da gioco ufficiale e personalizzata</li>
+                            <li>Buono pasto completo per il pranzo domenicale</li>
+                            <li>Assicurazione sportiva inclusa per l'intera durata dell'evento</li>
                         </ul>
                     </div>
                 </div>
@@ -110,9 +111,9 @@
                 <div class="d-flex align-items-start">
                     <div class="feature-icon-box me-3"><i class="bi bi-shield-exclamation"></i></div>
                     <div>
-                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">Regole e Fair Play</h5>
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue); font-size:1.05rem;">Regole e Fair Play</h5>
                         <p class="text-muted small mb-0" style="line-height: 1.6;">
-                            Lo spirito si basa sul divertimento. Valgono le regole classiche del volley ad eccezione di: nessun fallo di posizione, concessi i doppi tocchi (non consecutivi), il contatto con la rete non è invasione e la palla che colpisce i gonfiabili del campo d'acqua è considerata sempre <strong>IN</strong>.
+                            Lo spirito si basa interamente sul divertimento. Valgono le regole classiche del volley ad eccezione di: nessun fallo di posizione, concessi i doppi tocchi (non consecutivi), il contatto con la rete non è invasione e la palla che colpisce i bordi gonfiabili del campo d'acqua è considerata sempre <strong>IN</strong>.
                         </p>
                     </div>
                 </div>
@@ -129,15 +130,15 @@
             </div>
 
             <div class="map-card text-center text-sm-start">
-                <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.85rem; color: var(--banzai-blue);">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.85rem; color: var(--banzai-blue); letter-spacing: 0.5px;">
                     <i class="bi bi-geo-alt-fill text-danger me-1"></i> Posizione Campi
                 </h6>
                 <div class="map-container shadow-sm">
-                    <iframe src="https://maps.google.com/maps?q=Settimo%20di%20Pescantina%20Verona&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m14!1m8!1m3!1d11181.716383670988!2d10.9234856!3d45.4813134!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f892cfa771fd5%3A0x6bfe76ff7a26f34d!2sSettimo%2C%2037026%20Pescantina%20VR!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="https://maps.google.com/maps?q=Settimo%20di%20Pescantina%20Verona" target="_blank" class="btn btn-sm btn-outline-dark rounded-5 w-100 fw-bold text-uppercase" style="font-size:0.75rem; padding: 8px;">
-                        Apri in Google Maps <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    <a href="https://maps.app.goo.gl/wbyDqKkWF46M87N46" target="_blank" class="btn btn-sm btn-outline-dark rounded-5 w-100 fw-bold text-uppercase" style="font-size:0.75rem; padding: 8px; letter-spacing: 0.3px;">
+                        Apri l'app Google Maps <i class="bi bi-box-arrow-up-right ms-1"></i>
                     </a>
                 </div>
             </div>
