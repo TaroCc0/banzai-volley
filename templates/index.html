@@ -4,120 +4,98 @@
     .hero-landing {
         background-color: var(--banzai-blue);
         color: white;
-        padding: 60px 0;
-        transition: padding 0.3s ease;
+        padding: 50px 0 60px;
+        text-align: center;
     }
 
+    /* LOGO PERFETTO PER SMARTPHONE */
+    .hero-logo {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 16 / 10;
+        object-fit: contain;
+        background-color: white;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        margin-bottom: 25px;
+    }
+
+    /* CARD STILE APP (Minimal, pulite, senza bordi marcati) */
     .landing-card {
         background: white;
-        border: 1px solid #e9e6df;
-        border-radius: 12px; /* Angoli leggermente più morbidi e moderni */
-        transition: transform 0.3s, box-shadow 0.3s;
+        border: none;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
         height: 100%;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .landing-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(13, 35, 71, 0.12);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(13, 35, 71, 0.06);
     }
 
-    .icon-circle {
-        width: 70px;
-        height: 70px;
-        background-color: rgba(209, 42, 58, 0.07);
+    .icon-box {
+        font-size: 2rem;
         color: var(--banzai-red);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        margin: 0 auto 20px;
+        margin-bottom: 15px;
     }
 
-    /* LOGO OVALE PERFETTAMENTE RESPONSIVE */
-    .hero-logo {
-        width: 90%;               /* Prende quasi tutta la larghezza su smartphone */
-        max-width: 380px;         /* Dimensione massima bloccata su PC */
-        aspect-ratio: 16 / 10;    /* Formula matematica per mantenere l'ovale perfetto */
-        object-fit: contain;      /* Protegge l'immagine interna da tagli */
-        background-color: white; 
-        border-radius: 50%;       /* Genera la curvatura ellittica */
-        border: 4px solid white; 
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); 
-        margin-bottom: 25px;
-        padding: 8px;
-    }
-
-    /* MEDIA QUERY: Ottimizzazioni specifiche per Smartphone */
+    /* Adattamenti Mobile */
     @media (max-width: 576px) {
-        .hero-landing {
-            padding: 40px 15px;    /* Riduce i super-spazi vuoti inutili su mobile */
-        }
         .hero-landing h1 {
-            font-size: 2rem !important; /* Evita che il titolo si spezzi male su schermi stretti */
+            font-size: 1.8rem !important;
         }
-        .hero-logo {
-            max-width: 290px;     /* Leggermente più compatto sui telefoni piccoli */
+        .hero-landing p {
+            font-size: 0.9rem !important;
+        }
+        .landing-card {
+            padding: 20px;
         }
     }
 </style>
 
-<section class="hero-landing text-center">
-    <div class="container" style="max-width: 900px;">
-
-        <div class="mb-3">
-            <img src="{{ url_for('static', filename='images/logo_banzai.jpeg') }}" alt="Banzai Logo" class="hero-logo">
-        </div>
-
-        <div class="mb-4">
-            <span class="badge bg-danger text-uppercase fw-bold date-badge">
-                5-6 Settembre 2026
-            </span>
-        </div>
-
-        <p class="lead text-white-50 fw-bold text-uppercase tracking-wider mb-4">
-            Unconventional GreenVolley • Settimo di Pescantina
+<section class="hero-landing">
+    <div class="container d-flex flex-column align-items-center">
+        <img src="{{ url_for('static', filename='logo_banzai.jpeg') }}" alt="Banzai Logo" class="hero-logo">
+        
+        <h1 class="display-5 fw-900 text-uppercase tracking-tight" style="font-weight: 900; max-width: 700px;">
+            Unconventional GreenVolley
+        </h1>
+        <p class="text-white-50 mt-2 mb-4 px-3" style="max-width: 550px; font-weight: 500;">
+            Il torneo di pallavolo più folle dell'estate tra campi in erba, scivoli d'acqua e minigiochi strategici.
         </p>
-
-        <p class="fs-5 mx-auto mb-5 text-white" style="line-height: 1.7; max-width: 800px;">
-            Green-Volley non convenzionale: sport, giochi acquatici e divertimento! Il primo weekend di settembre, i
-            campi sportivi di Settimo ospiteranno una due giorni di puro divertimento. Gli atleti si sfideranno in un
-            torneo unico, a colpi di volley, spruzzi d’acqua e risate, uniti dalla passione per lo sport e dalla voglia
-            di stare insieme e divertirsi.
-        </p>
-
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-            <a href="{{ url_for('iscrizione') }}" class="btn btn-banzai-red btn-lg px-5 py-3 fs-6">Iscrivi la tua
-                Squadra</a>
-            <a href="{{ url_for('info') }}" class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bold">Regolamento</a>
+        
+        <div class="d-flex gap-2 flex-column flex-sm-row w-100 justify-content-center px-4" style="max-width: 400px;">
+            <a href="{{ url_for('iscrizione') }}" class="btn btn-banzai-red w-100 py-2.5 shadow-sm">Iscrivi Squadra</a>
+            <a href="{{ url_for('info') }}" class="btn btn-outline-light w-100 py-2.5 rounded-5" style="font-weight:700; text-transform:uppercase; font-size:0.85rem;">Regolamento</a>
         </div>
     </div>
 </section>
 
-<div class="container my-5 py-4">
-    <div class="row g-4 text-center">
+<div class="container my-5">
+    <div class="row g-3 g-md-4">
         <div class="col-md-4">
-            <div class="landing-card p-4">
-                <div class="icon-circle"><i class="bi bi-water"></i></div>
-                <h4 class="fw-bold text-uppercase mb-2">Campi Erba & Acqua</h4>
-                <p class="text-muted small">Le partite si disputano sia sui tradizionali campi in erba che sui
-                    divertentissimi campi gonfiabili in acqua.</p>
+            <div class="landing-card text-center text-sm-start">
+                <div class="icon-box"><i class="bi bi-water"></i></div>
+                <h5 class="fw-bold text-uppercase mb-2" style="font-size: 1.1rem;">Campi Erba & Acqua</h5>
+                <p class="text-muted small mb-0">Le partite si disputano sia sui tradizionali campi in erba che sui divertentissimi campi gonfiabili riempiti d'acqua.</p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="landing-card p-4">
-                <div class="icon-circle"><i class="bi bi-controller"></i></div>
-                <h4 class="fw-bold text-uppercase mb-2">Prova / Minigioco</h4>
-                <p class="text-muted small">Prima di ogni match, le squadre si sfidano in un minigioco folle. Chi vince
-                    riceve un bonus strategico!</p>
+            <div class="landing-card text-center text-sm-start">
+                <div class="icon-box"><i class="bi bi-controller"></i></div>
+                <h5 class="fw-bold text-uppercase mb-2" style="font-size: 1.1rem;">Prova / Minigioco</h5>
+                <p class="text-muted small mb-0">Prima di ogni match, le squadre si sfidano in un minigioco folle. Chi vince riceve un bonus strategico da usare in partita!</p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="landing-card p-4">
-                <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
-                <h4 class="fw-bold text-uppercase mb-2">5vs5 Misto</h4>
-                <p class="text-muted small">Squadre da 6 a 8 partecipanti (Età 18+). Garantite almeno 5 partite a tutti
-                    i team!</p>
+            <div class="landing-card text-center text-sm-start">
+                <div class="icon-box"><i class="bi bi-people-fill"></i></div>
+                <h5 class="fw-bold text-uppercase mb-2" style="font-size: 1.1rem;">5vs5 Misto</h5>
+                <p class="text-muted small mb-0">Formazioni dinamiche da 5 giocatori in campo. Massimo divertimento, inclusività e spirito di squadra garantiti.</p>
             </div>
         </div>
     </div>

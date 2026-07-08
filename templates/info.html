@@ -1,42 +1,89 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-    .info-header { background: linear-gradient(135deg, #0d2347 0%, #16366b 100%); color: white; padding: 50px 0; }
-    .feature-strip { background: white; border: 1px solid #e9e6df; border-radius: 8px; padding: 25px; margin-bottom: 20px; }
-    .feature-icon-box { font-size: 2.2rem; color: var(--banzai-red); margin-right: 20px; }
-    .detail-badge { background-color: var(--banzai-blue); color: white; padding: 15px; border-radius: 6px; text-align: center; }
-    .detail-badge h3 { font-weight: 900; margin: 0; font-size: 2rem; }
-    .detail-badge span { font-size: 0.7rem; text-transform: uppercase; font-weight: bold; opacity: 0.7; }
+    .info-header { 
+        background: linear-gradient(135deg, #0d2347 0%, #16366b 100%); 
+        color: white; 
+        padding: 45px 0; 
+    }
     
-    /* STILE PER LA MAPPA RESPONSIVE */
-    .map-card { background: white; border: 1px solid #e9e6df; border-radius: 8px; padding: 15px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
-    .map-container { position: relative; width: 100%; height: 250px; border-radius: 6px; overflow: hidden; }
+    /* MODERNE CARD ORIZZONTALI (Stile Stripe/Airbnb) */
+    .feature-strip { 
+        background: white; 
+        border: none;
+        border-radius: 16px; 
+        padding: 24px; 
+        margin-bottom: 16px; 
+        box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+    }
+    
+    .feature-icon-box { 
+        font-size: 1.8rem; 
+        color: var(--banzai-red); 
+        min-width: 45px;
+    }
+    
+    /* BADGE DETTAGLI IN GRIGLIA */
+    .detail-badge { 
+        background-color: white; 
+        color: var(--banzai-blue); 
+        padding: 16px; 
+        border-radius: 12px; 
+        text-align: center; 
+        box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+    }
+    .detail-badge h3 { font-weight: 900; margin: 0; font-size: 1.6rem; color: var(--banzai-red); }
+    .detail-badge span { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; opacity: 0.8; display: block; margin-top: 4px; }
+    
+    /* MAPPA EMBED COMPATTA */
+    .map-card { 
+        background: white; 
+        border: none;
+        border-radius: 16px; 
+        padding: 20px; 
+        margin-top: 20px; 
+        box-shadow: 0 4px 18px rgba(0,0,0,0.02); 
+    }
+    .map-container { 
+        position: relative; 
+        width: 100%; 
+        height: 220px; 
+        border-radius: 12px; 
+        overflow: hidden; 
+    }
     .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+    @media (max-width: 576px) {
+        .info-header h1 { font-size: 1.8rem !important; }
+        .feature-strip { padding: 20px; }
+        .feature-strip .d-flex { flex-direction: column; text-align: center; }
+        .feature-icon-box { margin-right: 0 !important; margin-bottom: 12px; text-align: center; }
+        .feature-strip ul { text-align: left; }
+    }
 </style>
 
 <section class="info-header text-center">
     <div class="container">
-        <h1 class="section-header-title display-5 m-0" style="font-weight: 900;">GUIDA AL TORNEO</h1>
-        <p class="text-white-50 small text-uppercase fw-bold tracking-wider mt-2">Tutto quello che c'è da sapere sulla partecipazione e le regole di gara</p>
+        <h1 class="display-6 m-0" style="font-weight: 900; letter-spacing: 0.5px;">GUIDA AL TORNEO</h1>
+        <p class="text-white-50 small text-uppercase fw-bold tracking-wider mt-2" style="font-size:0.7rem;">Regole di gara, quote e logistica dell'evento</p>
     </div>
 </section>
 
-<div class="container my-5">
-    <div class="row g-4">
+<div class="container my-4">
+    <div class="row g-3 g-md-4">
+        
         <div class="col-lg-8">
             
             <div class="feature-strip">
                 <div class="d-flex align-items-start">
-                    <div class="feature-icon-box"><i class="bi bi-trophy-fill"></i></div>
+                    <div class="feature-icon-box me-3"><i class="bi bi-trophy-fill"></i></div>
                     <div>
-                        <h4 class="fw-bold text-uppercase mb-2">La Formula del Torneo</h4>
-                        <ul class="text-muted ps-3 mb-0" style="line-height: 1.8;">
-                            <li><strong>Formato:</strong> 5 vs 5 misto (Età ammessa: 18+).</li>
-                            <li><strong>Struttura:</strong> 4 gironi da 5 squadre (20 squadre totali) con <strong>5 partite garantite a tutti</strong>.</li>
-                            <li><strong>Calendario:</strong> Sabato 5 Settembre (pomeriggio) partite di girone. Domenica 6 Settembre (mattina) prosecuzione gironi, e nel pomeriggio le fasi finali.</li>
-                            <li><strong>Qualificazioni:</strong> Tutte le squadre si qualificano indistintamente per le fasi finali!</li>
-                            <li><strong>Campi:</strong> I match si disputano sia su campi in erba che su campi in acqua.</li>
-                            <li><strong>Meccanica Minigiochi:</strong> Prima di ogni partita, i due team si sfidano in una prova/minigioco con spruzzi e risate. Chi vince ottiene un bonus da usare nella partita di volley immediatamente successiva.</li>
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">La Formula del Torneo</h5>
+                        <ul class="text-muted ps-3 mb-0 small" style="line-height: 1.7;">
+                            <li><strong>Formato:</strong> 5 vs 5 misto (Età: 18+).</li>
+                            <li><strong>Struttura:</strong> 4 gironi da 5 squadre con <strong>5 partite garantite</strong>.</li>
+                            <li><strong>Calendario:</strong> Sabato (pomeriggio) gironi. Domenica prosecuzione gironi e fasi finali.</li>
+                            <li><strong>Meccanica:</strong> Prima di ogni match si affronta un minigioco folle che assegna bonus strategici per la partita di volley successiva.</li>
                         </ul>
                     </div>
                 </div>
@@ -44,18 +91,16 @@
 
             <div class="feature-strip">
                 <div class="d-flex align-items-start">
-                    <div class="feature-icon-box"><i class="bi bi-cash-coin"></i></div>
+                    <div class="feature-icon-box me-3"><i class="bi bi-cash-coin"></i></div>
                     <div>
-                        <h4 class="fw-bold text-uppercase mb-2">Quote e Iscrizioni</h4>
-                        <p class="text-muted mb-2">
-                            Il costo di iscrizione è di <strong>20 € a persona</strong>. Ogni squadra deve essere composta da un <strong>minimo di 6 ad un massimo di 8 componenti</strong>.
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">Quote e Iscrizioni</h5>
+                        <p class="text-muted small mb-2">
+                            Quota di iscrizione: <strong>20 € a persona</strong>. Team composti da un <strong>minimo di 6 a un massimo di 8 atleti</strong>.
                         </p>
-                        <p class="text-muted mb-0 small fw-bold text-uppercase">La quota comprende:</p>
-                        <ul class="text-muted ps-3 small" style="line-height: 1.6;">
-                            <li>Partecipazione integrale al torneo</li>
-                            <li>Maglietta tecnica da gioco unica e personalizzata per ogni squadra</li>
-                            <li>Buono pasto per il pranzo di Domenica</li>
-                            <li>Assicurazione per evento sportivo</li>
+                        <ul class="text-muted ps-3 small mb-0" style="line-height: 1.6;">
+                            <li>Maglietta tecnica ufficiale personalizzata</li>
+                            <li>Buono pasto incluso per il pranzo domenicale</li>
+                            <li>Assicurazione sportiva inclusa per l'evento</li>
                         </ul>
                     </div>
                 </div>
@@ -63,47 +108,11 @@
 
             <div class="feature-strip">
                 <div class="d-flex align-items-start">
-                    <div class="feature-icon-box"><i class="bi bi-whistle-fill"></i></div>
+                    <div class="feature-icon-box me-3"><i class="bi bi-shield-exclamation"></i></div>
                     <div>
-                        <h4 class="fw-bold text-uppercase mb-2">Arbitraggio e Pareggi</h4>
-                        <p class="text-muted mb-2">
-                            Gli incontri saranno arbitrati dai partecipanti al torneo appartenenti ad altri gironi, ai quali si richiede massima disponibilità, trasparenza e buonsenso.
-                        </p>
-                        <p class="text-muted mb-0">
-                            <strong>Golden Point:</strong> Trattandosi di partite secche al 21, in caso di parità assoluta sul 20-20 si disputerà un unico punto extra per decretare il vincitore. Il servizio per quest'ultimo punto decisivo verrà assegnato tramite sorteggio.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-strip">
-                <div class="d-flex align-items-start">
-                    <div class="feature-icon-box"><i class="bi bi-shield-exclamation"></i></div>
-                    <div>
-                        <h4 class="fw-bold text-uppercase mb-2">Regole di Gioco ed Eccezioni</h4>
-                        <p class="text-muted small">
-                            Lo spirito del gioco si basa interamente sul divertimento e sul fair play. Eventuali dubbi vanno risolti sul campo con reciproco buonsenso. Sono rigorosamente vietati comportamenti provocatori, frasi offensive e qualsiasi atteggiamento irrispettoso.
-                        </p>
-                        <p class="text-muted mb-2 small">In generale valgono le regole ufficiali della pallavolo con le seguenti <strong>eccezioni speciali</strong>:</p>
-                        <ul class="text-muted ps-3 small" style="line-height: 1.6;">
-                            <li>Non c’è fallo di posizione, tuttavia è obbligatorio rispettare la rotazione originaria in battuta.</li>
-                            <li>Non c’è fallo di doppio tocco (sono comunque vietati due tocchi separati consecutivi dello stesso atleta).</li>
-                            <li>Non c’è fallo di accompagnata, resta però rigorosamente vietato bloccare o trattenere visibilmente la palla.</li>
-                            <li>Il tocco della rete non costituisce invasione.</li>
-                            <li>La riga fa sempre campo, sia per l'erba che per l'acqua: nello specifico, la palla che colpisce i bordi gonfiabili del campo in acqua viene considerata ufficialmente <strong>IN</strong>.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-strip">
-                <div class="d-flex align-items-start">
-                    <div class="feature-icon-box"><i class="bi bi-diagram-3-fill"></i></div>
-                    <div>
-                        <h4 class="fw-bold text-uppercase mb-2">Composizione Gironi e Criteri di Spareggio</h4>
-                        <p class="text-muted mb-0">
-                            Ad inizio torneo, una <strong>gara speciale tra i 20 capitani</strong> determinerà in totale casualità la composizione dei gironi. 
-                            Se due o più squadre terminano la fase a gironi a pari punti, <strong>l'unico parametro utilizzato per stabilire la classifica sarà l'ordine d'arrivo della gara iniziale dei capitani</strong>; non si terrà conto in alcun modo di altri criteri classici come gli scontri diretti o la differenza punti complessiva.
+                        <h5 class="fw-bold text-uppercase mb-2" style="color:var(--banzai-blue);">Regole e Fair Play</h5>
+                        <p class="text-muted small mb-0" style="line-height: 1.6;">
+                            Lo spirito si basa sul divertimento. Valgono le regole classiche del volley ad eccezione di: nessun fallo di posizione, concessi i doppi tocchi (non consecutivi), il contatto con la rete non è invasione e la palla che colpisce i gonfiabili del campo d'acqua è considerata sempre <strong>IN</strong>.
                         </p>
                     </div>
                 </div>
@@ -112,23 +121,23 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="row g-3 g-md-4">
-                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>20</h3><span>Squadre Max</span></div></div>
-                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>5 vs 5</h3><span>Misto (18+)</span></div></div>
-                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>5</h3><span>Partite Garantite</span></div></div>
-                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>21</h3><span>Partite Secche</span></div></div>
+            <div class="row g-2 g-md-3">
+                <div class="col-6"><div class="detail-badge"><h3>20</h3><span>Squadre Max</span></div></div>
+                <div class="col-6"><div class="detail-badge"><h3>5vs5</h3><span>Misto (18+)</span></div></div>
+                <div class="col-6"><div class="detail-badge"><h3>5</h3><span>Partite Gar.</span></div></div>
+                <div class="col-6"><div class="detail-badge"><h3>21</h3><span>Punti Secchi</span></div></div>
             </div>
 
-            <div class="map-card">
-                <h5 class="fw-bold text-uppercase mb-3" style="font-size: 0.9rem; color: var(--banzai-blue);">
-                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> Luogo del Torneo
-                </h5>
+            <div class="map-card text-center text-sm-start">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.85rem; color: var(--banzai-blue);">
+                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> Posizione Campi
+                </h6>
                 <div class="map-container shadow-sm">
-                    <iframe src="https://maps.google.com/maps?q=Settimo%20di%20Pescantina&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=Settimo%20di%20Pescantina%20Verona&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
-                <div class="text-center mt-2">
-                    <a href="https://maps.google.com/?q=Settimo+di+Pescantina" target="_blank" class="btn btn-link btn-sm text-danger fw-bold text-uppercase p-0" style="font-size: 0.75rem; text-decoration: none;">
-                        Apri in Google Maps <i class="bi bi-box-arrow-up-right"></i>
+                <div class="text-center mt-3">
+                    <a href="https://maps.google.com/maps?q=Settimo%20di%20Pescantina%20Verona" target="_blank" class="btn btn-sm btn-outline-dark rounded-5 w-100 fw-bold text-uppercase" style="font-size:0.75rem; padding: 8px;">
+                        Apri in Google Maps <i class="bi bi-box-arrow-up-right ms-1"></i>
                     </a>
                 </div>
             </div>

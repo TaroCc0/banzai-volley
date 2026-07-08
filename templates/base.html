@@ -1,136 +1,148 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BANZAI - Unconventional GreenVolley</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         :root {
             --banzai-blue: #0d2347;
-            --banzai-cream: #fdfbf7;
+            --banzai-cream: #f8f9fa;
             --banzai-red: #d12a3a;
-            --banzai-text: #212529;
+            --banzai-text: #2B303A;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--banzai-text);
             background-color: var(--banzai-cream);
+            -webkit-font-smoothing: antialiased;
         }
 
         .navbar-banzai {
             background-color: var(--banzai-blue);
-            padding: 15px 0;
+            padding: 12px 0;
+            box-shadow: 0 4px 12px rgba(13, 35, 71, 0.1);
         }
 
-        .navbar-banzai .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 700;
-            text-transform: uppercase;
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 600;
             font-size: 0.9rem;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
+            padding: 8px 16px !important;
+            transition: color 0.2s;
         }
 
-        .navbar-banzai .nav-link:hover,
-        .navbar-banzai .nav-link.active {
-            color: white;
+        .nav-link:hover {
+            color: #fff !important;
         }
 
         .btn-banzai-red {
             background-color: var(--banzai-red);
-            color: white;
+            color: white !important;
             font-weight: 700;
             text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 10px 20px !important;
+            border-radius: 50px;
             border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
+            transition: transform 0.2s, background-color 0.2s;
         }
 
         .btn-banzai-red:hover {
             background-color: #b3202e;
-            color: white;
+            transform: translateY(-1px);
         }
 
         footer {
             background-color: var(--banzai-blue);
-            color: white;
-            padding: 30px 0;
-            margin-top: 60px;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 4px solid var(--banzai-red);
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-weight: 700;
             font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         footer a:hover {
             color: white;
         }
 
+        /* Ottimizzazione Mobile Hamburgermenu */
         @media (max-width: 991px) {
             .navbar-collapse {
-                background-color: var(--banzai-blue);
-                padding: 15px;
-                border-radius: 8px;
-                margin-top: 10px;
+                background: #091933;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+                border-bottom: 3px solid var(--banzai-red);
+                z-index: 9999;
             }
-
             .navbar-nav .nav-link {
-                padding: 10px 0 !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 12px 0 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
             }
-
             .navbar-nav li:last-child .nav-link {
                 border-bottom: none;
             }
-
             .navbar-nav .btn-banzai-red {
-                margin-top: 10px;
-                text-align: center;
                 width: 100%;
-                /* Il tasto ISCRIVITI diventa a schermo intero su mobile, facilissimo da cliccare */
+                text-align: center;
+                margin-top: 15px;
+                padding: 12px !important;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-banzai navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-banzai sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-900 tracking-tight text-white" href="{{ url_for('index') }}"
-                style="font-weight: 900; letter-spacing: -1px;">
-                BANZAI <span style="color: var(--banzai-red);">VOLLEY</span>
+            <a class="navbar-brand text-white" href="{{ url_for('index') }}">
+                BANZAI <span class="text-danger">VOLLEY</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link mx-2" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="{{ url_for('info') }}">Guida e Regole</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="{{ url_for('minigiochi') }}">Minigiochi</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2" href="{{ url_for('squadre') }}">Squadre</a></li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('info') }}">Info Torneo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('squadre') }}">Squadre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('minigiochi') }}">Minigiochi</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="btn btn-banzai-red btn-sm" href="{{ url_for('iscrizione') }}">Iscriviti</a>
+                        <a class="nav-link btn-banzai-red" href="{{ url_for('iscrizione') }}">Iscriviti</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% with messages = get_flashed_messages(with_categories=true) %}\
     {% if messages %}
     <div class="container mt-3">
         {% for category, message in messages %}
-        <div class="alert alert-{{ category }} text-center fw-bold" role="alert">{{ message }}</div>
+        <div class="alert alert-{{ category }} text-center fw-bold small rounded-3" role="alert">{{ message }}</div>
         {% endfor %}
     </div>
     {% endif %}
@@ -139,17 +151,15 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <div class="container text-center text-md-start">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-white fw-bold mb-2 mb-md-0">BANZAI UNCONVENTIONAL GREENVOLLEY</div>
-                <div class="col-md-4 text-center mb-2 mb-md-0">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-6 text-white fw-bold mb-3 mb-md-0" style="font-size: 0.9rem; letter-spacing: 0.5px;">
+                    BANZAI UNCONVENTIONAL GREENVOLLEY
+                </div>
+                <div class="col-md-6 text-center text-md-end">
                     <a href="{{ url_for('info') }}" class="mx-2">INFO</a>
                     <a href="{{ url_for('minigiochi') }}" class="mx-2">MINIGIOCHI</a>
                     <a href="{{ url_for('iscrizione') }}" class="mx-2">ISCRIVITI</a>
-                </div>
-                <div class="col-md-4 text-center text-md-end style-muted"
-                    style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">
-                    © 2026 Banzai Volley • In collaborazione con Pro Loco di Settimo e Comune di Pescantina
                 </div>
             </div>
         </div>
@@ -157,5 +167,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
