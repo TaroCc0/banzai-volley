@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .info-header { background: linear-gradient(135deg, #0d2347 0%, #16366b 100%); color: white; padding: 50px 0; }
+    .feature-strip { background: white; border: 1px solid #e9e6df; border-radius: 8px; padding: 25px; margin-bottom: 20px; }
+    .feature-icon-box { font-size: 2.2rem; color: var(--banzai-red); margin-right: 20px; }
+    .detail-badge { background-color: var(--banzai-blue); color: white; padding: 15px; border-radius: 6px; text-align: center; }
+    .detail-badge h3 { font-weight: 900; margin: 0; font-size: 2rem; }
+    .detail-badge span { font-size: 0.7rem; text-transform: uppercase; font-weight: bold; opacity: 0.7; }
+</style>
+
+<section class="info-header text-center">
+    <div class="container">
+        <h1 class="section-header-title display-5 m-0" style="font-weight: 900;">GUIDA AL TORNEO</h1>
+        <p class="text-white-50 small text-uppercase fw-bold tracking-wider mt-2">Tutto quello che c'è da sapere sulla partecipazione e le regole di gara</p>
+    </div>
+</section>
+
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            
+            <div class="feature-strip">
+                <div class="d-flex align-items-start">
+                    <div class="feature-icon-box"><i class="bi bi-trophy-fill"></i></div>
+                    <div>
+                        <h4 class="fw-bold text-uppercase mb-2">La Formula del Torneo</h4>
+                        <ul class="text-muted ps-3 mb-0" style="line-height: 1.8;">
+                            <li><strong>Formato:</strong> 5 vs 5 misto (Età ammessa: 18+).</li>
+                            <li><strong>Struttura:</strong> 4 gironi da 5 squadre (20 squadre totali) con <strong>5 partite garantite a tutti</strong>.</li>
+                            <li><strong>Calendario:</strong> Sabato 5 Settembre (pomeriggio) partite di girone. Domenica 6 Settembre (mattina) prosecuzione gironi, e nel pomeriggio le fasi finali.</li>
+                            <li><strong>Qualificazioni:</strong> Tutte le squadre si qualificano indistintamente per le fasi finali!</li>
+                            <li><strong>Campi:</strong> I match si disputano sia su campi in erba che su campi in acqua.</li>
+                            <li><strong>Meccanica Minigiochi:</strong> Prima di ogni partita, i due team si sfidano in una prova/minigioco con spruzzi e risate. Chi vince ottiene un bonus da usare nella partita di volley immediatamente successiva.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-strip">
+                <div class="d-flex align-items-start">
+                    <div class="feature-icon-box"><i class="bi bi-cash-coin"></i></div>
+                    <div>
+                        <h4 class="fw-bold text-uppercase mb-2">Quote e Iscrizioni</h4>
+                        <p class="text-muted mb-2">
+                            Il costo di iscrizione è di <strong>20 € a persona</strong>. Ogni squadra deve essere composta da un <strong>minimo di 6 ad un massimo di 8 componenti</strong>.
+                        </p>
+                        <p class="text-muted mb-0 small fw-bold text-uppercase">La quota comprende:</p>
+                        <ul class="text-muted ps-3 small" style="line-height: 1.6;">
+                            <li>Partecipazione integrale al torneo</li>
+                            <li>Maglietta tecnica da gioco unica e personalizzata per ogni squadra</li>
+                            <li>Buono pasto per il pranzo di Domenica</li>
+                            <li>Assicurazione per evento sportivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-strip">
+                <div class="d-flex align-items-start">
+                    <div class="feature-icon-box"><i class="bi bi-whistle-fill"></i></div>
+                    <div>
+                        <h4 class="fw-bold text-uppercase mb-2">Arbitraggio e Pareggi</h4>
+                        <p class="text-muted mb-2">
+                            Gli incontri saranno arbitrati dai partecipanti al torneo appartenenti ad altri gironi, ai quali si richiede massima disponibilità, trasparenza e buonsenso.
+                        </p>
+                        <p class="text-muted mb-0">
+                            <strong>Golden Point:</strong> Trattandosi di partite secche al 21, in caso di parità assoluta sul 20-20 si disputerà un unico punto extra per decretare il vincitore. Il servizio per quest'ultimo punto decisivo verrà assegnato tramite sorteggio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-strip">
+                <div class="d-flex align-items-start">
+                    <div class="feature-icon-box"><i class="bi bi-shield-exclamation"></i></div>
+                    <div>
+                        <h4 class="fw-bold text-uppercase mb-2">Regole di Gioco ed Eccezioni</h4>
+                        <p class="text-muted small">
+                            Lo spirito del gioco si basa interamente sul divertimento e sul fair play. Eventuali dubbi vanno risolti sul campo con reciproco buonsenso. Sono rigorosamente vietati comportamenti provocatori, frasi offensive e qualsiasi atteggiamento irrispettoso.
+                        </p>
+                        <p class="text-muted mb-2 small">In generale valgono le regole ufficiali della pallavolo con le seguenti <strong>eccezioni speciali</strong>:</p>
+                        <ul class="text-muted ps-3 small" style="line-height: 1.6;">
+                            <li>Non c’è fallo di posizione, tuttavia è obbligatorio rispettare la rotazione originaria in battuta.</li>
+                            <li>Non c’è fallo di doppio tocco (sono comunque vietati due tocchi separati consecutivi dello stesso atleta).</li>
+                            <li>Non c’è fallo di accompagnata, resta però rigorosamente vietato bloccare o trattenere visibilmente la palla.</li>
+                            <li>Il tocco della rete non costituisce invasione.</li>
+                            <li>La riga fa sempre campo, sia per l'erba che per l'acqua: nello specifico, la palla che colpisce i bordi gonfiabili del campo in acqua viene considerata ufficialmente <strong>IN</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-strip">
+                <div class="d-flex align-items-start">
+                    <div class="feature-icon-box"><i class="bi bi-diagram-3-fill"></i></div>
+                    <div>
+                        <h4 class="fw-bold text-uppercase mb-2">Composizione Gironi e Criteri di Spareggio</h4>
+                        <p class="text-muted mb-0">
+                            Ad inizio torneo, una <strong>gara speciale tra i 20 capitani</strong> determinerà in totale casualità la composizione dei gironi. 
+                            Se due o più squadre terminano la fase a gironi a pari punti, <strong>l'unico parametro utilizzato per stabilire la classifica sarà l'ordine d'arrivo della gara iniziale dei capitani</strong>; non si terrà conto in alcun modo di altri criteri classici come gli scontri diretti o la differenza punti complessiva.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="row g-3">
+                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>20</h3><span>Squadre Max</span></div></div>
+                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>5 vs 5</h3><span>Misto (18+)</span></div></div>
+                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>5</h3><span>Partite Garantite</span></div></div>
+                <div class="col-6 col-lg-12"><div class="detail-badge"><h3>21</h3><span>Partite Secche</span></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

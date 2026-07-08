@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .form-wrapper { background: white; border: 1px solid #e9e6df; border-radius: 8px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .form-subtitle { font-weight: 900; text-transform: uppercase; font-size: 1rem; border-left: 4px solid var(--banzai-red); padding-left: 10px; margin: 30px 0 20px; }
+    .summary-strip { background-color: #f1f3f5; border-radius: 6px; padding: 15px; font-size: 0.85rem; font-weight: 700; color: #495057; }
+    .player-card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 15px; margin-bottom: 12px; }
+</style>
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-900 text-uppercase mb-1" style="font-weight: 900;">Registrazione Squadra</h1>
+        <p class="text-muted small fw-bold text-uppercase">Blocca lo slot per il tuo team. Quota: 20€ a persona (Min 6 - Max 8 componenti).</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="form-wrapper">
+                <form method="POST" action="{{ url_for('iscrizione') }}">
+                    
+                    <div class="form-subtitle">Dati del Team</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-uppercase">Nome Squadra *</label>
+                            <input type="text" name="nome_squadra" class="form-control" required placeholder="Inserisci il nome del team">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-uppercase">Nome Capitano *</label>
+                            <input type="text" id="input-cap-name" name="nome_capitano" class="form-control" required placeholder="Nome e Cognome del referente">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-uppercase">Telefono Capitano *</label>
+                            <input type="tel" name="telefono" class="form-control" required placeholder="Es. 3456789012">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-uppercase">Email *</label>
+                            <input type="email" name="email" class="form-control" required placeholder="esempio@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-subtitle d-flex justify-content-between align-items-center">
+                        <span>Componenti Squadra (<span id="player-count">0</span>)</span>
+                        <button type="button" id="btn-add-player" class="btn btn-sm btn-outline-primary fw-bold text-uppercase">+ Aggiungi Giocatore</button>
+                    </div>
+
+                    <div id="players-container">
+                        </div>
+
+                    <div class="summary-strip text-center my-4" id="price-label">
+                        Quota calcolata: 0€
+                    </div>
+
+                    <div class="form-subtitle">Note aggiuntive</div>
+                    <div class="mb-4">
+                        <textarea name="note" class="form-control" rows="3" placeholder="Taglie magliette, intolleranze per i buoni pasto o comunicazioni speciali..."></textarea>
+                    </div>
+
+                    <div class="text-end pt-3 border-top">
+                        <button type="submit" class="btn btn-banzai-red btn-lg px-5">Invia Iscrizione Ufficiale</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const container = document.getElementById('players-container');
+    const addBtn = document.getElementById('btn-add-player');
+    const countLabel = document.getElementById('player-count');
+    const priceLabel = document.getElementById('price-label');
+    const capitanoInput = document.getElementById('input-cap-name');
+
+    let playerCount = 0;
+
+    function addPlayerRow(nomeVal = "", tagliaVal = "M") {
+        // Vincolo max 8 partecipanti come da documento
+        if (playerCount >= 8) {
+            alert("Il regolamento prevede un massimo di 8 partecipanti per squadra.");
+            return;
+        }
+
+        const currentIdx = playerCount;
+        const row = document.createElement('div');
+        row.className = "player-card";
+        row.id = `player-row-${currentIdx}`;
+        row.innerHTML = `
+            <div class="row g-2 align-items-center">
+                <div class="col-md-6">
+                    <input type="text" class="form-control form-control-sm input-pname" placeholder="Nome Completo Atleta" value="${nomeVal}" required>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select form-control-sm">
+                        <option value="S" ${tagliaVal==='S'?'selected':''}>Taglia S</option>
+                        <option value="M" ${tagliaVal==='M'?'selected':''}>Taglia M</option>
+                        <option value="L" ${tagliaVal==='L'?'selected':''}>Taglia L</option>
+                        <option value="XL" ${tagliaVal==='XL'?'selected':''}>Taglia XL</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-sm btn-outline-dark btn-capitano w-100 fw-bold text-uppercase" onclick="setCapitano(${currentIdx})">
+                        Assegna Cap.
+                    </button>
+                </div>
+            </div>
+        `;
+        container.appendChild(row);
+        playerCount++;
+        updateState();
+        
+        if (currentIdx === 0) setCapitano(0);
+    }
+
+    window.setCapitano = function(index) {
+        const rows = document.querySelectorAll('.player-card');
+        const buttons = document.querySelectorAll('.btn-capitano');
+        buttons.forEach((btn, idx) => {
+            if (idx === index) {
+                btn.className = "btn btn-sm btn-danger btn-capitano w-100 fw-bold text-uppercase disabled";
+                btn.innerText = "Capitano ✓";
+                
+                const nameInput = rows[idx].querySelector('.input-pname');
+                if(nameInput && nameInput.value) {
+                    capitanoInput.value = nameInput.value;
+                }
+            } else {
+                btn.className = "btn btn-sm btn-outline-dark btn-capitano w-100 fw-bold text-uppercase";
+                btn.innerText = "Assegna Cap.";
+            }
+        });
+    }
+
+    function updateState() {
+        countLabel.innerText = playerCount;
+        // AGGIORNATO: Formula calcolo basata interamente sui 20€ a persona indicati nel file Word
+        const totale = playerCount * 20;
+        priceLabel.innerText = `Quota calcolata: 20€ a persona × ${playerCount} partecipanti = Totale ${totale}€ (Min 6 - Max 8 atleti)`;
+    }
+
+    addBtn.addEventListener('click', () => addPlayerRow());
+
+    // Popolamento iniziale obbligatorio di minimo 6 righe per aiutare l'utente a rispettare i limiti minimi
+    for(let i=0; i<6; i++){
+        addPlayerRow();
+    }
+</script>
+{% endblock %}

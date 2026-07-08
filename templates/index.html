@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .hero-landing {
+        background-color: var(--banzai-blue);
+        color: white;
+        padding: 60px 0;
+    }
+
+    .landing-card {
+        background: white;
+        border: 1px solid #e9e6df;
+        border-radius: 8px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        height: 100%;
+    }
+
+    .landing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(13, 35, 71, 0.08);
+    }
+
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(209, 42, 58, 0.07);
+        color: var(--banzai-red);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin: 0 auto 20px;
+    }
+
+    /* MODIFICA AL CODICE: LOGO OVALE SENZA TAGLI */
+    .hero-logo {
+        width: 100%;
+        max-width: 420px; /* Larghezza aumentata per l'effetto ovale */
+        height: auto; /* Mantiene le proporzioni originali senza tagliare nulla */
+        border-radius: 150px / 100px; /* Crea una curvatura ovale (orizzontale / verticale) */
+        border: 5px solid white; /* Bordo bianco protettivo */
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Ombra marcata attorno al profilo */
+        margin-bottom: 25px;
+        display: inline-block;
+    }
+
+    .date-badge {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        padding: 10px 25px;
+        border-radius: 50px;
+    }
+</style>
+
+<section class="hero-landing text-center">
+    <div class="container" style="max-width: 900px;">
+        
+        <div class="mb-3">
+            <img src="{{ url_for('static', filename='images/logo_banzai.jpeg') }}" alt="Banzai Logo" class="hero-logo">
+        </div>
+
+        <div class="mb-4">
+            <span class="badge bg-danger text-uppercase fw-bold date-badge">
+                5-6 Settembre 2026
+            </span>
+        </div>
+
+        <p class="lead text-white-50 fw-bold text-uppercase tracking-wider mb-4">
+            Unconventional GreenVolley • Settimo di Pescantina
+        </p>
+
+        <p class="fs-5 mx-auto mb-5 text-white" style="line-height: 1.7; max-width: 800px;">
+            Green-Volley non convenzionale: sport, giochi acquatici e divertimento! Il primo weekend di settembre, i campi sportivi di Settimo ospiteranno una due giorni di puro divertimento. Gli atleti si sfideranno in un torneo unico, a colpi di volley, spruzzi d’acqua e risate, uniti dalla passione per lo sport e dalla voglia di stare insieme e divertirsi.
+        </p>
+
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ url_for('iscrizione') }}" class="btn btn-banzai-red btn-lg px-5 py-3 fs-6">Iscrivi la tua Squadra</a>
+            <a href="{{ url_for('info') }}" class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bold">Regolamento</a>
+        </div>
+    </div>
+</section>
+
+<div class="container my-5 py-4">
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="landing-card p-4">
+                <div class="icon-circle"><i class="bi bi-water"></i></div>
+                <h4 class="fw-bold text-uppercase mb-2">Campi Erba & Acqua</h4>
+                <p class="text-muted small">Le partite si disputano sia sui tradizionali campi in erba che sui divertentissimi campi gonfiabili in acqua.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="landing-card p-4">
+                <div class="icon-circle"><i class="bi bi-controller"></i></div>
+                <h4 class="fw-bold text-uppercase mb-2">Prova / Minigioco</h4>
+                <p class="text-muted small">Prima di ogni match, le squadre si sfidano in un minigioco folle. Chi vince riceve un bonus strategico!</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="landing-card p-4">
+                <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
+                <h4 class="fw-bold text-uppercase mb-2">5vs5 Misto</h4>
+                <p class="text-muted small">Squadre da 6 a 8 partecipanti (Età 18+). Garantite almeno 5 partite a tutti i team!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

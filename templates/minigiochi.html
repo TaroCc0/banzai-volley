@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .mini-header { background: #d12a3a; color: white; padding: 50px 0; }
+    .game-card { background: white; border: 1px solid #e9e6df; border-radius: 8px; padding: 35px; margin-bottom: 30px; }
+    .game-title { font-weight: 900; text-transform: uppercase; color: var(--banzai-blue); }
+    .badge-rule { font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; }
+</style>
+
+<section class="mini-header text-center">
+    <div class="container">
+        <h1 class="section-header-title display-5 m-0" style="font-weight: 900;">I MINIGIOCHI FOLLI</h1>
+        <p class="text-white-50 small text-uppercase fw-bold tracking-wider mt-2">La deviazione strategica con spruzzi e risate prima di scendere in campo</p>
+    </div>
+</section>
+
+<div class="container my-5" style="max-width: 900px;">
+    <div class="text-center mb-5">
+        <h3 class="fw-bold text-uppercase fs-4">Funzionamento Ufficiale</h3>
+        <p class="text-muted mx-auto mb-0" style="max-width: 700px;">
+            Come stabilito dal regolamento, <strong>prima di ogni singola partita di volley</strong> le due squadre si sfideranno faccia a faccia in una prova/minigioco speciale. Il vincitore assoluto del minigioco riceverà un <strong>bonus esclusivo</strong> da utilizzare immediatamente nella partita di volley a seguire sui campi in erba o in acqua!
+        </p>
+    </div>
+
+    <div class="game-card">
+        <div class="d-flex justify-content-between align-items-start flex-wrap mb-3">
+            <h4 class="game-title m-0 fs-4"><i class="bi bi-circle-fill text-danger me-2"></i>1. La Corsa dei T-Rex</h4>
+            <span class="badge-rule bg-warning text-dark mt-2 mt-sm-0">Gara di Velocità</span>
+        </div>
+        <p class="text-muted mb-0">
+            Un componente designato per team dovrà indossare un ingombrante e totalmente anti-aerodinamico <strong>costume gonfiabile da T-Rex</strong>. Le regole prevedono uno scatto di velocità su pista dritta superando piccoli ostacoli. Le movenze goffe garantiranno risate e bonus immediati per chi taglia il traguardo per primo.
+        </p>
+    </div>
+
+    <div class="game-card">
+        <div class="d-flex justify-content-between align-items-start flex-wrap mb-3">
+            <h4 class="game-title m-0 fs-4"><i class="bi bi-circle-fill text-primary me-2"></i>2. Basket Vivente con Gavettoni</h4>
+            <span class="badge-rule bg-primary text-white mt-2 mt-sm-0">Precisione Balistica</span>
+        </div>
+        <p class="text-muted mb-0">
+            Un gioco di mira ad altissimo tasso di umidità. Un giocatore sorregge un secchio sopra la propria testa fungendo da canestro umano. I compagni di squadra, posizionati dietro una linea stabilita, dovranno lanciare dei <strong>gavettoni d'acqua</strong> cercando di fare centro nel minor tempo possibile.
+        </p>
+    </div>
+</div>
+{% endblock %}
